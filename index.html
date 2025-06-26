@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preneetha Yedida | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">Portfolio</div>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#hero" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-bg">
+                <div class="hero-shape hero-shape-1"></div>
+                <div class="hero-shape hero-shape-2"></div>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="hero-name">Preneetha Yedida</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Aspiring Full-Stack Developer & UI/UX Designer passionate about creating 
+                        beautiful, functional digital experiences that make a difference.
+                    </p>
+
+                    <div class="hero-social">
+                        <a href="https://github.com/preneethayedida/" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/preneetha-yedida1/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:preneethayedida@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+
+                    <button class="hero-cta" onclick="scrollToSection('about')">
+                        <span>Explore My Work</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-description">
+                       I'm a 3rd-year B.Tech student in Information Technology at Vishnu Institute of Technology. 
+      I enjoy blending logic and creativity to build beautiful, meaningful web experiences. 
+      Currently interning at Apex Planet and enhancing my skills in full-stack development.
+                    </p>
+                </div>
+
+                <div class="about-content">
+                    <!-- Skills Section -->
+                    <div class="about-skills">
+                        <h3 class="about-subtitle">Skills & Expertise</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="skill-content">
+                                    <h4 class="skill-title">Frontend Development</h4>
+                                    <p class="skill-description">HTML5, CSS3, JavaScript, React, Tailwind CSS</p>
+                                </div>
+                            </div>
+
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="skill-content">
+                                    <h4 class="skill-title">UI/UX Design</h4>
+                                    <p class="skill-description">Figma, Responsive Design, Accessibility, Aesthetic Layouts, Framer</p>
+                                </div>
+                            </div>
+
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="skill-content">
+                                    <h4 class="skill-title">Mobile Friendly Design</h4>
+                                    <p class="skill-description">Responsive Web Apps, Flexbox, Grid, Media Queries</p>
+                                </div>
+                            </div>
+
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="skill-content">
+                                    <h4 class="skill-title">Backend Basics</h4>
+                                    <p class="skill-description">Node.js, Express, MongoDB (learning phases)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Section -->
+                    <div class="about-experience">
+                        <h3 class="about-subtitle">Experience</h3>
+                        <div class="experience-timeline">
+                            <div class="experience-item">
+                                <div class="experience-dot"></div>
+                                <div class="experience-card">
+                                    <h4 class="experience-title">Frontend Developer Intern</h4>
+                                    <p class="experience-company">ApexPlanet </p>
+                                    <p class="experience-period">2025-present</p>
+                                    <p class="experience-description">
+                                        Worked on building responsive websites using HTML, CSS, and JavaScript.
+                                        Implemented dynamic features like to-do lists, quiz apps, and product filters.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience-item">
+                                <div class="experience-dot"></div>
+                                <div class="experience-card">
+                                    <h4 class="experience-title">System Engineer</h4>
+                                    <p class="experience-company">Microlink Information Technologies | Vijaywada</p>
+                                    <p class="experience-period">Nov 2023 - May 2024</p>
+                                    <p class="experience-description">
+                                        Assisted in designing and maintaining system architectures during the internship.  
+    Gained practical knowledge in system configuration, network troubleshooting, and performance optimization.  
+    Collaborated with technical teams to support IT infrastructure and deployment tasks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Here are some of my recent projects that showcase my skills in full-stack development, 
+                        UI/UX design, and modern web technologies.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Task Management App">
+                            <div class="project-overlay">
+                                <button class="project-demo-btn" onclick="openProject('todo')">
+                                    <i class="fas fa-eye"></i>
+                                    Live Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Task Management App</h3>
+                            <p class="project-description">
+                                A fully functional to-do list application with local storage persistence, 
+                                task prioritization, and intuitive user interface.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Local Storage</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-primary" onclick="openProject('todo')">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/3965557/pexels-photo-3965557.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="E-commerce Product Catalog">
+                            <div class="project-overlay">
+                                <button class="project-demo-btn" onclick="openProject('products')">
+                                    <i class="fas fa-eye"></i>
+                                    Live Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">E-commerce Product Catalog</h3>
+                            <p class="project-description">
+                                Interactive product listing with advanced filtering, sorting, and search functionality. 
+                                Perfect for e-commerce applications.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Filtering</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-primary" onclick="openProject('products')">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/207983/pexels-photo-207983.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Telugu Culture Website">
+                            <div class="project-overlay">
+                                <button class="project-demo-btn" onclick="window.open('https://telugu-culture-website.glitch.me', '_blank')">
+                                    <i class="fas fa-eye"></i>
+                                    Live Demo
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3 class="project-title">Celebrating Telugu Culture</h3>
+                            <p class="project-description">
+                                A bilingual cultural website designed. It showcases Telugu traditions, festivals, cuisine and historic pride.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Cultural Theme</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-primary" onclick="window.open('https://telugu-culture-website.glitch.me', '_blank')">
+                                    <i class="fas fa-external-link-alt"></i>
+                                        Live Demo
+                                </button>
+                                <button class="btn-secondary" onclick="window.open('https://github.com/preneethayedida/Telugu-Culture-Website.git', '_blank')">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/4145197/pexels-photo-4145197.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Science Quiz App">
+                            <div class="project-overlay">
+                                <button class="project-demo-btn" onclick="window.open('https://science-quiz-preneetha.glitch.me', '_blank')">
+                                    <i class="fas fa-eye"></i>
+                                    Live Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Science Quiz</h3>
+                            <p class="project-description">
+                                A clean and curious web-based science quiz app that fetches live facts from an API, tracks your score, and offers a sleek dark-mode experience. Built to make learning interactive and fun!
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">API Integration</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-primary" onclick="window.open('https://science-quiz-preneetha.glitch.me', '_blank')">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
+                                </button>
+                                <button class="btn-secondary" onclick="window.open('https://github.com/preneethayedida/SCIENCE-QUIZ', '_blank')">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Science Quiz App">
+                            <div class="project-overlay">
+                                <button class="project-demo-btn" onclick="window.open('https://preneetha-quizapp.glitch.me', '_blank')">
+                                    <i class="fas fa-eye"></i>
+                                    Live Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Nature Quiz</h3>
+                            <p class="project-description">
+                                A beautifully designed nature-themed quiz that blends calm visuals with interactive learning. It features animated transitions, question-based scoring, and a friendly user interface.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Animations</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-primary" onclick="window.open('https://preneetha-quizapp.glitch.me', '_blank')">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
+                                </button>
+                                <button class="btn-secondary" onclick="window.open('https://github.com/preneethayedida/ScienceQuiz.git', '_blank')">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Personal Portfolio Website">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Personal Portfolio Website</h3>
+                            <p class="project-description">
+                                This very website! A responsive, modern portfolio showcasing my work and skills 
+                                with smooth animations and professional design.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-description">
+                        I'm always interested in new opportunities and collaborations. 
+                        Let's discuss how we can work together!
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h3 class="contact-subtitle">Contact Information</h3>
+                        <div class="contact-items">
+                            <a href="mailto:preneethayedida@gmail.com" class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p class="contact-label">Email</p>
+                                    <p class="contact-value">preneethayedida@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <a href="tel:+15551234567" class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p class="contact-label">Phone</p>
+                                    <p class="contact-value">+91 70936 xxxxx</p>
+                                </div>
+                            </a>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p class="contact-label">Location</p>
+                                    <p class="contact-value">Tanuku, Andhra Pradesh, India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-cta">
+                            <h4 class="contact-cta-title">Let's Connect!</h4>
+                            <p class="contact-cta-text">
+                                Whether you have a project in mind, want to collaborate, or just want to say hello, 
+                                I'd love to hear from you. Drop me a message and let's start a conversation!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                                    <span class="form-error" id="name-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+                                    <span class="form-error" id="email-error"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <input type="text" id="subject" name="subject" class="form-input" placeholder="What's this about?" required>
+                                <span class="form-error" id="subject-error"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell me about your project or just say hello!" required></textarea>
+                                <span class="form-error" id="message-error"></span>
+                            </div>
+
+                            <button type="submit" class="form-submit">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div class="form-success" id="form-success">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 class="success-title">Message Sent!</h3>
+                            <p class="success-text">
+                                Thank you for reaching out. I'll get back to you within 24 hours.
+                            </p>
+                            <button class="btn-primary" onclick="resetContactForm()">
+                                Send Another Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-name">Preneetha Yedida</h3>
+                <p class="footer-title">Aspiring Full-Stack Developer & UI/UX Designer</p>
+                <div class="footer-social">
+                    <a href="https://github.com/preneethayedida/" class="footer-link">GitHub</a>
+                    <a href="https://www.linkedin.com/in/preneetha-yedida1/" class="footer-link">LinkedIn</a>
+                    <a href="mailto:preneethayedida@gmail.com" class="footer-link">Email</a>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copyright">© 2025 Preneetha Yedida. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Project Demo</h2>
+                <button class="modal-close" onclick="closeProject()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Project content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

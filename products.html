@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+        }
+
+        .controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-controls select {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .price-filter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .price-filter label {
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .price-slider {
+            position: relative;
+            flex: 1;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin: 0 1rem;
+        }
+
+        .price-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: transparent;
+            -webkit-appearance: none;
+            pointer-events: none;
+        }
+
+        .price-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        .results-info {
+            margin-bottom: 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stock-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .product-description {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.125rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 0.875rem;
+        }
+
+        .star.empty {
+            color: #d1d5db;
+        }
+
+        .rating-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .add-to-cart {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover:not(:disabled) {
+            background: #2563eb;
+        }
+
+        .add-to-cart:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .empty-results {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+            grid-column: 1 / -1;
+        }
+
+        .empty-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+            }
+
+            .price-filter {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+
+            .price-slider {
+                margin: 0;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Product Catalog</h1>
+            <p>Discover our curated collection with advanced filtering and sorting capabilities</p>
+        </div>
+
+        <div class="controls">
+            <div class="controls-row">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search products...">
+                </div>
+                
+                <div class="filter-controls">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Footwear">Footwear</option>
+                    </select>
+                    
+                    <select id="sort-select">
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                        <option value="price-asc">Price Low-High</option>
+                        <option value="price-desc">Price High-Low</option>
+                        <option value="rating-desc">Rating High-Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="price-filter">
+                <label>Price Range:</label>
+                <span>$<span id="price-min">0</span></span>
+                <div class="price-slider">
+                    <input type="range" id="price-range-min" min="0" max="1000" value="0">
+                    <input type="range" id="price-range-max" min="0" max="1000" value="1000">
+                </div>
+                <span>$<span id="price-max">1000</span></span>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span id="results-count">Showing 0 products</span>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <!-- Products will be rendered here -->
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                name: 'Premium Wireless Headphones',
+                price: 299.99,
+                rating: 4.8,
+                category: 'Electronics',
+                image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'High-quality wireless headphones with noise cancellation',
+                inStock: true,
+                reviews: 1247
+            },
+            {
+                id: 2,
+                name: 'Smart Fitness Watch',
+                price: 199.99,
+                rating: 4.6,
+                category: 'Electronics',
+                image: 'https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'Advanced fitness tracking with heart rate monitoring',
+                inStock: true,
+                reviews: 892
+            },
+            {
+                id: 3,
+                name: 'Organic Cotton T-Shirt',
+                price: 29.99,
+                rating: 4.4,
+                category: 'Clothing',
+                image: 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'Comfortable and sustainable organic cotton shirt',
+                inStock: true,
+                reviews: 456
+            },
+            {
+                id: 4,
+                name: 'Professional Camera Lens',
+                price: 599.99,
+                rating: 4.9,
+                category: 'Electronics',
+                image: 'https://images.pexels.com/photos/225769/pexels-photo-225769.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: '85mm f/1.4 portrait lens for professional photography',
+                inStock: false,
+                reviews: 2134
+            },
+            {
+                id: 5,
+                name: 'Leather Messenger Bag',
+                price: 149.99,
+                rating: 4.7,
+                category: 'Accessories',
+                image: 'https://images.pexels.com/photos/2422476/pexels-photo-2422476.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'Handcrafted leather bag perfect for work and travel',
+                inStock: true,
+                reviews: 678
+            },
+            {
+                id: 6,
+                name: 'Gaming Mechanical Keyboard',
+                price: 129.99,
+                rating: 4.5,
+                category: 'Electronics',
+                image: 'https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'RGB backlit mechanical keyboard with blue switches',
+                inStock: true,
+                reviews: 1543
+            },
+            {
+                id: 7,
+                name: 'Casual Sneakers',
+                price: 89.99,
+                rating: 4.3,
+                category: 'Footwear',
+                image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'Comfortable everyday sneakers with modern design',
+                inStock: true,
+                reviews: 324
+            },
+            {
+                id: 8,
+                name: 'Stainless Steel Water Bottle',
+                price: 24.99,
+                rating: 4.6,
+                category: 'Accessories',
+                image: 'https://images.pexels.com/photos/3737394/pexels-photo-3737394.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+                description: 'Insulated water bottle keeps drinks cold for 24 hours',
+                inStock: true,
+                reviews: 789
+            }
+        ];
+
+        // State
+        let filteredProducts = [...products];
+        let searchTerm = '';
+        let selectedCategory = 'all';
+        let sortBy = 'name-asc';
+        let priceRange = [0, 1000];
+
+        // DOM elements
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('category-filter');
+        const sortSelect = document.getElementById('sort-select');
+        const priceRangeMin = document.getElementById('price-range-min');
+        const priceRangeMax = document.getElementById('price-range-max');
+        const priceMinDisplay = document.getElementById('price-min');
+        const priceMaxDisplay = document.getElementById('price-max');
+        const resultsCount = document.getElementById('results-count');
+        const productGrid = document.getElementById('product-grid');
+
+        // Event listeners
+        searchInput.addEventListener('input', handleSearch);
+        categoryFilter.addEventListener('change', handleCategoryFilter);
+        sortSelect.addEventListener('change', handleSort);
+        priceRangeMin.addEventListener('input', handlePriceRange);
+        priceRangeMax.addEventListener('input', handlePriceRange);
+
+        function handleSearch(e) {
+            searchTerm = e.target.value.toLowerCase();
+            filterAndRenderProducts();
+        }
+
+        function handleCategoryFilter(e) {
+            selectedCategory = e.target.value;
+            filterAndRenderProducts();
+        }
+
+        function handleSort(e) {
+            sortBy = e.target.value;
+            filterAndRenderProducts();
+        }
+
+        function handlePriceRange() {
+            const min = parseInt(priceRangeMin.value);
+            const max = parseInt(priceRangeMax.value);
+            
+            if (min > max) {
+                priceRangeMin.value = max;
+                priceRange = [max, max];
+            } else {
+                priceRange = [min, max];
+            }
+            
+            priceMinDisplay.textContent = priceRange[0];
+            priceMaxDisplay.textContent = priceRange[1];
+            filterAndRenderProducts();
+        }
+
+        function filterAndRenderProducts() {
+            // Filter products
+            filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+                const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+                
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+
+            // Sort products
+            filteredProducts.sort((a, b) => {
+                const [field, order] = sortBy.split('-');
+                let comparison = 0;
+                
+                switch (field) {
+                    case 'name':
+                        comparison = a.name.localeCompare(b.name);
+                        break;
+                    case 'price':
+                        comparison = a.price - b.price;
+                        break;
+                    case 'rating':
+                        comparison = a.rating - b.rating;
+                        break;
+                }
+                
+                return order === 'desc' ? -comparison : comparison;
+            });
+
+            renderProducts();
+        }
+
+        function renderProducts() {
+            resultsCount.textContent = `Showing ${filteredProducts.length} products`;
+
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = `
+                    <div class="empty-results">
+                        <i class="fas fa-search"></i>
+                        <p>No products match your filters</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        ${!product.inStock ? '<div class="stock-badge">Out of Stock</div>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${renderStars(product.rating)}
+                            </div>
+                            <span class="rating-text">${product.rating} (${product.reviews})</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$${product.price}</span>
+                            <button class="add-to-cart" ${!product.inStock ? 'disabled' : ''}>
+                                <i class="fas fa-shopping-cart"></i>
+                                ${product.inStock ? 'Add to Cart' : 'Unavailable'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let stars = '';
+            
+            for (let i = 0; i < 5; i++) {
+                
+                if (i < fullStars) {
+                    stars += '<i class="fas fa-star star"></i>';
+                } else if (i === fullStars && hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt star"></i>';
+                } else {
+                    stars += '<i class="fas fa-star star empty"></i>';
+                }
+            }
+            
+            return stars;
+        }
+
+        // Initial render
+        filterAndRenderProducts();
+    </script>
+</body>
+</html>
